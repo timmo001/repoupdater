@@ -1,5 +1,4 @@
 """Update dependencies in your repositories."""
-import json
 import requests
 from alpinepkgs.packages import get_package
 from github import Github
