@@ -31,7 +31,7 @@ The following example will not commit anything since `--test` is enabled. This
  is good for testing you have the right repo and confirming before you commit.
 
 ```bash
-repoupdater --token AAAAAAAAAAAAAAAAAAAAAAAAAAA --repo timmo001/home-panel --apk --docker_path docker --test
+repoupdater --token AAAAAAAAAAAAAAAAAAAAA --repo timmo001/home-panel --apk --docker_path docker --test
 ```
 
 ```bash
