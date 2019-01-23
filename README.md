@@ -12,8 +12,8 @@
 
 Update dependencies in your repositories.
 
-*This application was heavily based on [addonupdater](addonupdater) by
- [Ludeeus](ludeeus). Big props to him for probably 90%+ of this project!*
+*This application was heavily based on [addonupdater] by
+ [Ludeeus]. Big props to him for probably 90%+ of this project!*
 
 ## Install
 
