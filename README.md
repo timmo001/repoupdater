@@ -31,10 +31,26 @@ The following example will not commit anything since `--test` is enabled. This
  is good for testing you have the right repo and confirming before you commit.
 
 ```bash
-repoupdater --token AAAAAAAAAAAAAAAAAAAAA --repo sqlite-web --test
+repoupdater --token AAAAAAAAAAAAAAAAAAAAAAAAAAA --repo timmo001/home-panel --apk --docker_path docker --test
 ```
 
 ```bash
+Starting update sequence for timmo001/home-panel
+Checking for apk updates
+curl Already have the newest version 7.61.1-r1
+git Already have the newest version 2.18.1-r0
+yarn Already have the newest version 1.7.0-r0
+apk-tools Already have the newest version 2.10.1-r0
+bash Already have the newest version 4.4.19-r1
+busybox Already have the newest version 1.28.4-r3
+ca-certificates Already have the newest version 20171114-r3
+nginx Already have the newest version 1.14.2-r0
+nodejs-current Already have the newest version 9.11.1-r2
+tzdata Already have the newest version 2018f-r0
+:arrow_up: Updates tar to version 1.31-r0
+Creating new commit in master for timmo001/home-panel
+{'commit': Commit(sha="4085943979212b027cf7a8a92ed74501e8614e77"), 'content': ContentFile(path="docker/Dockerfile")}
+Test was enabled, skipping commit
 ```
 
 ## CLI options
