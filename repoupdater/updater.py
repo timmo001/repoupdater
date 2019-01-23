@@ -36,8 +36,9 @@ class RepoUpdater():
         self.pip = pip
         self.test = test
         self.verbose = verbose
-        self.docker_path = docker_path
-        self.python_req_path = python_req_path
+        self.docker_path = '' if not docker_path else docker_path + '/'
+        self.python_req_path = (
+            '' if not python_req_path else python_req_path + '/')
         self.pull_request = pull_request
         self.release = release
         self.github = Github(token)
@@ -101,8 +102,12 @@ class RepoUpdater():
 
     def update_apk(self):
         """Get APK packages in use with updates."""
-        file = "{}/Dockerfile".format(self.docker_path)
-        remote_file = self.get_file_obj(file)
+        file = "{}Dockerfile".format(self.docker_path)
+        try:
+            remote_file = self.get_file_obj(file)
+        except UnknownObjectException:
+            print("Dockerfile not found in", file)
+            return
         masterfile = self.get_file_content(remote_file)
         run = masterfile.split('RUN')[1].split('LABEL')[0]
         packages = []
@@ -179,7 +184,7 @@ class RepoUpdater():
 
     def update_pip(self):
         """Get APK packages in use with updates."""
-        file = "{}/requirements.txt".format(self.python_req_path)
+        file = "{}requirements.txt".format(self.python_req_path)
         packages = []
         updates = []
         try:
