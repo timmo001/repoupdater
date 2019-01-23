@@ -86,7 +86,8 @@ class RepoUpdater():
 
             body = body + '- ' + repo.get_git_commit(commit.sha).message + '\n'
 
-        url = "https://github.com" + self.repo + "/compare/" + prev_tag + "..." + self.release
+        url = "https://github.com" + self.repo + "/compare/" + prev_tag + "..."
+              + self.release
         body = body + "\n\n[Changelog](" + url + ")"
         if self.verbose:
             print("Version", self.release)
@@ -336,57 +337,3 @@ class RepoUpdater():
     def get_file_content(self, obj):
         """Return the content of the file."""
         return obj.decoded_content.decode()
-
-    # def base_image(self):
-    #     """Update for base image."""
-    #     dockerfile = "{}/Dockerfile".format(self.name)
-    #     buildfile = "{}/build.json".format(self.name)
-
-    #     remote_dockerfile = self.get_file_obj(dockerfile)
-    #     dockerfile_content = self.get_file_content(remote_dockerfile)
-
-    #     remote_buildfile = self.get_file_obj(buildfile)
-    #     buildfile_content = self.get_file_content(remote_buildfile)
-
-    #     used_file = dockerfile_content.split('BUILD_FROM=hassioaddons/')[1]
-    #     used_file = used_file.split('\n')[0]
-
-    #     base = used_file.split(':')[1]
-    #     version = used_file.split(':')[1]
-
-    #     if base == 'ubuntu-base':
-    #         repo = self.github.get_repo('hassio-addons/addon-ubuntu-base')
-    #     else:
-    #         repo = self.github.get_repo('hassio-addons/addon-base')
-
-    #     remote_version = list(repo.get_releases())[0].tag_name[1:]
-
-    #     if self.verbose:
-    #         print("Current version", version)
-    #         print("Available version", remote_version)
-
-    #     if remote_version != version:
-    #         msg = COMMIT_MSG.format('base image in Dockerfile',
-    #                                 remote_version)
-
-    #         new_dockerfile = dockerfile_content.replace(version,
-    #                                                     remote_version)
-    #         self.commit(dockerfile, msg, new_dockerfile, remote_dockerfile.sha)
-
-    #         current_buildfile = json.loads(buildfile_content)
-    #         new_buildfile = {}
-    #         for item in current_buildfile:
-    #             if isinstance(current_buildfile[item], dict):
-    #                 new_buildfile[item] = {}
-    #                 for subitem in current_buildfile[item]:
-    #                     value = current_buildfile[item][subitem]
-    #                     value = value.replace(version, remote_version)
-    #                     new_buildfile[item][subitem] = value
-    #             else:
-    #                 new_buildfile[item] = current_buildfile[item]
-    #         msg = COMMIT_MSG.format('base image in build file',
-    #                                 remote_version)
-    #         new_buildfile = json.dumps(new_buildfile, indent=4, sort_keys=True)
-    #         self.commit(buildfile, msg, new_buildfile, remote_buildfile.sha)
-    #     else:
-    #         print("Base image already have the newest version", version)
