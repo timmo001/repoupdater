@@ -22,7 +22,7 @@ To install, just run:
 > **Requires Python version 3.5.3+**
 
 ```bash
-pip install repoupdater
+python3 -m pip install --upgrade repoupdater --user
 ```
 
 ## Example
