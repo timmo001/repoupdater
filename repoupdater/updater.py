@@ -27,12 +27,11 @@ This PR was created with [repoupdater][repoupdater] :tada:
 class RepoUpdater():
     """Class for repo updater."""
 
-    def __init__(self, token, name, repo=None, test=False,
+    def __init__(self, token, repo, test=False,
                  verbose=False, release=None, skip_apk=False, skip_pip=False,
-                 skip_custom=False, org=None, pull_request=False, fork=False,
+                 skip_custom=False, pull_request=False, fork=False,
                  skip_base=False):
         """Initilalize."""
-        self.name = name
         self.repo = repo
         self.test = test
         self.token = token
@@ -43,7 +42,6 @@ class RepoUpdater():
         self.skip_apk = skip_apk
         self.skip_pip = skip_pip
         self.skip_base = skip_base
-        self.org = ORG if org is None else org
         self.skip_custom = skip_custom
         self.github = Github(token)
 
@@ -52,7 +50,6 @@ class RepoUpdater():
         if self.verbose:
             print("Addon name", self.name)
             print("Addon repo", self.repo)
-            print("GitHub org", self.org)
 
         if self.release is not None:
             self.create_release()
@@ -77,7 +74,7 @@ class RepoUpdater():
     def create_release(self):
         """Create and publish a release."""
         print("Creating release for", self.name, "with version", self.release)
-        repository = "{}/{}".format(self.org, self.repo)
+        repository = "{}/{}".format(self.repo)
         repo = self.github.get_repo(repository)
         last_commit = list(repo.get_commits())[0].sha
         prev_tag = list(repo.get_tags())[0].name
@@ -191,7 +188,7 @@ class RepoUpdater():
         packages = []
         updates = []
         try:
-            repo = self.github.get_repo("{}/{}".format(self.org, self.repo))
+            repo = self.github.get_repo("{}/{}".format(self.repo))
             repo.get_contents(file)
             has_requirements = True
         except UnknownObjectException:
@@ -281,7 +278,7 @@ class RepoUpdater():
         """Commit changes."""
         print(msg)
         if not self.test:
-            repository = "{}/{}".format(self.org, self.repo)
+            repository = "{}/{}".format(self.repo)
             ghrepo = self.github.get_repo(repository)
             if self.pull_request:
                 print("Creating new PR for", self.repo)
@@ -294,8 +291,7 @@ class RepoUpdater():
                     user = self.github.get_user()
                     fork_branch = NEW_BRANCH.format(package, version)
                     branch = user.login + ':' + fork_branch
-                    print("Forking " + self.org + '/' +
-                          self.repo + " to " + branch)
+                    print("Forking " + self.repo + " to " + branch)
                     user.create_fork(ghrepo)
                     fork = self.github.get_repo(user.login + '/' + self.repo)
                     ref = 'refs/heads/' + fork_branch
@@ -312,7 +308,6 @@ class RepoUpdater():
                     branch = NEW_BRANCH.format(package, version)
                     source = ghrepo.get_branch('master')
                     if self.verbose:
-                        print("Org", self.org)
                         print("Repository", repository)
                         print("Msg", msg)
                         print("Branch", branch)
@@ -322,7 +317,6 @@ class RepoUpdater():
                 print(ghrepo.create_pull(title, body, 'master', branch))
             else:
                 if self.verbose:
-                    print("Org", self.org)
                     print("Repository", repository)
                     print("Path", path)
                     print("Msg", msg)
@@ -334,7 +328,7 @@ class RepoUpdater():
 
     def get_file_obj(self, file):
         """Return the file object."""
-        repository = "{}/{}".format(self.org, self.repo)
+        repository = "{}/{}".format(self.repo)
         ghrepo = self.github.get_repo(repository)
         obj = ghrepo.get_contents(file)
         return obj

@@ -1,7 +1,6 @@
 """Enable CLI."""
 import click
 
-
 @click.command()
 @click.option('--token', '-T', help='GitHub access_token.')
 @click.option('--repo', '-R', default=None, help='Repository.')
@@ -20,8 +19,8 @@ def cli(token, repo, test, verbose, release,
     """CLI for this package."""
     from repoupdater.updater import RepoUpdater
     updater = RepoUpdater(token, repo, test, verbose, release,
-                           skip_apk, skip_pip, skip_custom, org, pull_request,
-                           fork, skip_base)
+                          skip_apk, skip_pip, skip_custom, pull_request,
+                          fork, skip_base)
     updater.update_repo()
 
 
