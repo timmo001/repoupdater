@@ -285,10 +285,12 @@ class RepoUpdater():
                 body = PR_BODY.format(package=package, version=version)
                 branch = NEW_BRANCH.format(package, version)
                 source = ghrepo.get_branch('master')
+                ref = "update-{}".format(info[2])
                 if self.verbose:
                     print("Repository", repository)
                     print("Msg", msg)
                     print("Branch", branch)
+                    print("Ref", ref)
                 print(ghrepo.create_git_ref(ref=ref,
                                             sha=source.commit.sha))
                 print(ghrepo.update_file(path, msg, content, sha, branch))
