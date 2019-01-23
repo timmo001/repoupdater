@@ -106,6 +106,6 @@ SOFTWARE.
 [pulls-shield]: https://img.shields.io/docker/pulls/timmo001/repoupdater.svg
 [releases-shield]: https://img.shields.io/github/release/timmo001/repoupdater.svg
 [releases]: https://github.com/timmo001/repoupdater/releases
-[travis-shield]: https://travis-ci.com/timmo001/reporeleaser.svg?branch=master
-[travis]: https://travis-ci.com/timmo001/reporeleaser
+[travis-shield]: https://travis-ci.com/timmo001/repoupdater.svg?branch=master
+[travis]: https://travis-ci.com/timmo001/repoupdater
 [version-shield]: https://images.microbadger.com/badges/version/timmo001/repoupdater.svg
