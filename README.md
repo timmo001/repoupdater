@@ -65,7 +65,7 @@ param | alias | description
 
 MIT License
 
-Copyright (c) Timmo 2019
+Copyright (c) 2019 Timmo
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
