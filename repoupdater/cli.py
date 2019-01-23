@@ -1,6 +1,7 @@
 """Enable CLI."""
 import click
 
+
 @click.command()
 @click.option('--token', '-T', help='GitHub access_token.')
 @click.option('--repo', '-R', default=None, help='Repository.')

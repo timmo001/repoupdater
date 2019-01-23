@@ -86,8 +86,8 @@ class RepoUpdater():
 
             body = body + '- ' + repo.get_git_commit(commit.sha).message + '\n'
 
-        url = "https://github.com" + self.repo + "/compare/" + prev_tag + "..."
-              + self.release
+        url = "https://github.com" + self.repo + "/compare/" + prev_tag +
+                "..." + self.release
         body = body + "\n\n[Changelog](" + url + ")"
         if self.verbose:
             print("Version", self.release)
