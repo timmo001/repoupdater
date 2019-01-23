@@ -85,6 +85,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+[addonupdater]: https://github.com/ludeeus/addonupdater
 [buymeacoffee-shield]: https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg
 [buymeacoffee]: https://www.buymeacoffee.com/timmo
 [CODE_OF_CONDUCT]: https://github.com/timmo001/home-panel/blob/master/.github/CODE_OF_CONDUCT.md
@@ -94,6 +95,8 @@ SOFTWARE.
 [gitlabci-shield]: https://gitlab.com/timmo/home-panel/badges/master/pipeline.svg
 [gitlabci]: https://gitlab.com/timmo/home-panel/pipelines
 [hass]: https://www.home-assistant.io/
+[license-shield]: https://img.shields.io/github/license/timmo001/home-panel.svg
+[ludeeus]: https://github.com/ludeeus
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2019.svg
 [microbadger]: https://microbadger.com/images/timmo001/home-panel
 [midnight-theme]: https://raw.githubusercontent.com/timmo001/home-panel/master/docs/resources/midnight-theme.png
@@ -103,8 +106,6 @@ SOFTWARE.
 [pulls-shield]: https://img.shields.io/docker/pulls/timmo001/home-panel.svg
 [releases-shield]: https://img.shields.io/github/release/timmo001/home-panel.svg
 [releases]: https://github.com/timmo001/home-panel/releases
-[version-shield]: https://images.microbadger.com/badges/version/timmo001/home-panel.svg
-[travis]: https://travis-ci.com/timmo001/reporeleaser
 [travis-shield]: https://travis-ci.com/timmo001/reporeleaser.svg?branch=master
-[addonupdater]: https://github.com/ludeeus/addonupdater
-[ludeeus]: https://github.com/ludeeus
+[travis]: https://travis-ci.com/timmo001/reporeleaser
+[version-shield]: https://images.microbadger.com/badges/version/timmo001/home-panel.svg
