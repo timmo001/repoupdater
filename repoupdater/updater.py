@@ -6,7 +6,7 @@ from github.GithubException import UnknownObjectException
 
 COMMIT_MSG = ':arrow_up: Updates {} to version {}'
 REPO = "{}/{}"
-NEW_BRANCH = "update-{}-to-version-{}"
+NEW_BRANCH = "update-{}-{}"
 PR_BODY = """
 # Proposed Changes
 
@@ -164,7 +164,7 @@ class RepoUpdater():
             for package in updates:
                 msg = COMMIT_MSG.format(package['package'], package['version'])
 
-                file = "{}/Dockerfile".format(self.docker_path)
+                file = "{}Dockerfile".format(self.docker_path)
                 remote_file = self.get_file_obj(file)
                 if 'apkadd--no-cache' in package['search_string']:
                     string = package['search_string']
@@ -212,7 +212,7 @@ class RepoUpdater():
                             'search_string': line}
                     packages.append(this)
         else:
-            file = "{}/Dockerfile".format(self.docker_path)
+            file = "{}Dockerfile".format(self.docker_path)
             remote_file = self.get_file_obj(file)
             masterfile = self.get_file_content(remote_file)
             run = masterfile.split('RUN')[1].split('LABEL')[0]
@@ -289,7 +289,7 @@ class RepoUpdater():
                 body = PR_BODY.format(package=package, version=version)
                 branch = NEW_BRANCH.format(package, version)
                 source = ghrepo.get_branch('master')
-                ref = "update-{}".format(info[2])
+                ref = "refs/heads/{}".format(branch)
                 if self.verbose:
                     print("Repository", repository)
                     print("Msg", msg)
