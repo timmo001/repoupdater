@@ -10,7 +10,12 @@ setuptools.setup(
     author_email="contact@timmo.xyz",
     description="",
     long_description=LONG,
-    install_requires=['alpinepkgs', 'click', 'PyGithub>=1.43.4', 'requests'],
+    install_requires=[
+        'alpinepkgs==1.0.4',
+        'click==7.0',
+        'PyGithub==1.43.5',
+        'requests==2.21.0'
+    ],
     long_description_content_type="text/markdown",
     url="https://github.com/timmo001/repoupdater",
     packages=setuptools.find_packages(),
