@@ -2,7 +2,7 @@
 import requests
 from alpinepkgs.packages import get_package
 from github import Github
-from github.GithubException import UnknownObjectException
+from github.GithubException import UnknownObjectException, GithubException
 
 COMMIT_MSG = ':arrow_up: Updates {} to version {}'
 REPO = "{}/{}"
@@ -305,8 +305,12 @@ class RepoUpdater():
                     print("Msg", msg)
                     print("Branch", branch)
                     print("Ref", ref)
-                print(ghrepo.create_git_ref(ref=ref,
-                                            sha=source.commit.sha))
+                try:
+                    print(ghrepo.create_git_ref(ref=ref,
+                                                sha=source.commit.sha))
+                except GithubException:
+                    print("Ref already exist, skipping")
+                    return
                 print(ghrepo.update_file(path, msg, content, sha, branch))
                 print(ghrepo.create_pull(title, body, 'master', branch))
             else:
