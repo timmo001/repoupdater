@@ -140,6 +140,8 @@ class RepoUpdater():
         for pkg in packages:
             if 'apkadd--no-cache' in str(pkg['package']):
                 pack = str(pkg['package']).replace('apkadd--no-cache', "")
+                pkg['search_string'] = pkg['search_string'].replace(
+                    'apkadd--no-cache', "")
             else:
                 pack = pkg['package']
             if self.verbose:
@@ -234,12 +236,20 @@ class RepoUpdater():
         for pkg in packages:
             if 'pip3install--upgrade' in pkg['package']:
                 pack = pkg['package'].replace('pip3install--upgrade', "")
+                pkg['search_string'] = pkg['search_string'].replace(
+                    'pip3install--upgrade', "")
             elif 'pipinstall--upgrade' in pkg['package']:
                 pack = pkg['package'].replace('pipinstall--upgrade', "")
+                pkg['search_string'] = pkg['search_string'].replace(
+                    'pipinstall--upgrade', "")
             elif 'pip3install' in pkg['package']:
                 pack = pkg['package'].replace('pip3install', "")
+                pkg['search_string'] = pkg['search_string'].replace(
+                    'pip3install', "")
             elif 'pipinstall' in pkg['package']:
                 pack = pkg['package'].replace('pipinstall', "")
+                pkg['search_string'] = pkg['search_string'].replace(
+                    'pipinstall', "")
             else:
                 pack = pkg['package']
             if self.verbose:
