@@ -11,7 +11,7 @@ setuptools.setup(
     description="",
     long_description=LONG,
     install_requires=[
-        'alpinepkgs==1.0.4',
+        'alpinepkgs==1.0.5',
         'click==7.0',
         'PyGithub==1.43.5',
         'requests==2.21.0'
