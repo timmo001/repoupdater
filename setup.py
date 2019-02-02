@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
     LONG = fh.read()
 setuptools.setup(
     name="repoupdater",
-    version="0.1.5",
+    version="0.2.0",
     author="Timmo",
     author_email="contact@timmo.xyz",
     description="",
