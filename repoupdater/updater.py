@@ -122,13 +122,13 @@ class RepoUpdater():
                         if '=' in pkg:
                             if '@legacy' in pkg:
                                 package = pkg.split('@')[0]
-                                branch = 'v3.7'
+                                branch = 'v3.8'
                             elif '@edge' in pkg:
                                 package = pkg.split('@')[0]
                                 branch = 'edge'
                             else:
                                 package = pkg.split('=')[0]
-                                branch = 'v3.8'
+                                branch = 'v3.9'
                             version = pkg.split('=')[1].split()[0]
 
                             this = {'package': package,
