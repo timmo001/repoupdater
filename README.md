@@ -63,6 +63,7 @@ param | alias | description
 `--pip` | `-p` | Check for pip updates.
 `--test` | `None` | If this flag is used commits will be omitted.
 `--verbose` | `None` | Print more stuff to the console.
+`--apk_version` | `None` | Target version of apk packages, like `3.9`.
 `--docker_path` | `-D` | Path to your `Dockerfile`. Leave this blank for the root directory.
 `--python_req_path` | `-P` | Path to your python `requirements.txt`. Leave this blank for the root directory.
 `--release` | `None` | Creates a new release this argument require release version eg. `v1.0.3`.

@@ -27,8 +27,8 @@ class RepoUpdater():
     """Class for repo updater."""
 
     def __init__(self, token, repo, apk=False, pip=False, test=False,
-                 verbose=False, docker_path=None, python_req_path=None,
-                 release=None, pull_request=False):
+                 verbose=False, apk_version=3.9, docker_path=None,
+                 python_req_path=None, release=None, pull_request=False):
         """Initilalize."""
         self.token = token
         self.repo = repo
@@ -36,6 +36,7 @@ class RepoUpdater():
         self.pip = pip
         self.test = test
         self.verbose = verbose
+        self.apk_version = apk_version
         self.docker_path = '' if not docker_path else docker_path + '/'
         self.python_req_path = (
             '' if not python_req_path else python_req_path + '/')
@@ -102,6 +103,7 @@ class RepoUpdater():
 
     def update_apk(self):
         """Get APK packages in use with updates."""
+        legacy_target = self.apk_version - 0.1
         file = "{}Dockerfile".format(self.docker_path)
         try:
             remote_file = self.get_file_obj(file)
@@ -122,13 +124,13 @@ class RepoUpdater():
                         if '=' in pkg:
                             if '@legacy' in pkg:
                                 package = pkg.split('@')[0]
-                                branch = 'v3.8'
+                                branch = 'v{}'.format(legacy_target)
                             elif '@edge' in pkg:
                                 package = pkg.split('@')[0]
                                 branch = 'edge'
                             else:
                                 package = pkg.split('=')[0]
-                                branch = 'v3.9'
+                                branch = 'v{}'.format(self.apk_version)
                             version = pkg.split('=')[1].split()[0]
 
                             this = {'package': package,
