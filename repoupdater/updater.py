@@ -103,7 +103,7 @@ class RepoUpdater():
 
     def update_apk(self):
         """Get APK packages in use with updates."""
-        legacy_target = self.apk_version - 0.1
+        legacy_target = round(self.apk_version - 0.1, 1)
         file = "{}Dockerfile".format(self.docker_path)
         try:
             remote_file = self.get_file_obj(file)
