@@ -13,7 +13,7 @@ setuptools.setup(
     install_requires=[
         'alpinepkgs==1.0.5',
         'click==7.0',
-        'PyGithub==1.43.5',
+        'PyGithub==1.43.7',
         'requests==2.21.0'
     ],
     long_description_content_type="text/markdown",
