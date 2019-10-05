@@ -27,7 +27,7 @@ class RepoUpdater():
     """Class for repo updater."""
 
     def __init__(self, token, repo, apk=False, pip=False, test=False,
-                 verbose=False, apk_version=3.9, docker_path=None,
+                 verbose=False, apk_version=3.10, docker_path=None,
                  python_req_path=None, release=None, pull_request=False):
         """Initilalize."""
         self.token = token
