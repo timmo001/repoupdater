@@ -14,7 +14,7 @@ setuptools.setup(
         'alpinepkgs==1.0.5',
         'click==7.0',
         'PyGithub==1.44',
-        'requests==2.22.0'
+        'requests==2.24.0'
     ],
     long_description_content_type="text/markdown",
     url="https://github.com/timmo001/repoupdater",
